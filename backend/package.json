@@ -21,7 +21,6 @@
     "@types/express": "^5.0.3",
     "@types/express-ws": "^3.0.5",
     "@types/node": "^24.1.0",
-    "@types/ws": "^8.18.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "cors": "^2.8.5",
@@ -33,7 +32,6 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typeorm": "^0.3.25",
-    "ws": "^8.18.3"
+    "typeorm": "^0.3.25"
   }
 }

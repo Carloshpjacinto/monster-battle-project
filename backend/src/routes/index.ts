@@ -1,11 +1,18 @@
 import { Router } from "express";
-import userRouter from "../modules/user/routes/user.route";
+import playerRouter from "../modules/player/routes/player.route";
 import monsterRouter from "../modules/monster/routes/user.route";
+import arenaRouter from "../modules/arena/routes/arena.route";
+import battleArenaRouter from "../modules/battleArena/routes/battleArena.route";
 
 const routes = Router();
 
-routes.use("/user", userRouter);
+routes.use("/player", playerRouter);
 
 routes.use("/monster", monsterRouter);
+
+routes.use("/arena", arenaRouter);
+
+routes.use("/battlearena", battleArenaRouter);
+
 
 export default routes;

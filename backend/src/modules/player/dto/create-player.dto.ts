@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 
-export class CreateUserDto {
+export class CreatePlayerDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(255)
