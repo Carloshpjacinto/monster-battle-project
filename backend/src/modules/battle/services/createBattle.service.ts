@@ -1,7 +1,7 @@
 import "reflect-metadata";
-import { BattleArena } from "../entities/battleArena.entity";
-import { BattleArenaRepository } from "../repositories/battleArena.repository";
-import { CreateBattleArenaDto } from "../dto/create-battleArena.dto";
+import { Battle } from "../entities/battle.entity";
+import { BattleArenaRepository } from "../repositories/battle.repository";
+import { CreateBattleDto } from "../dto/create-battle.dto";
 import FindByIdPlayerService from "../../player/services/findByIdPlayer.service";
 import FindByIdMonsterService from "../../monster/services/findByIdMonster.service";
 import FindByIdArenaService from "../../arena/services/findByIdArena.service";
@@ -11,8 +11,8 @@ import { battleDetail } from "../types/battleDetail";
 
 export default class CreateBattleArenaService {
   async execute(
-    data: CreateBattleArenaDto
-  ): Promise<BattleArena | battleDetail> {
+    data: CreateBattleDto
+  ): Promise<Battle | battleDetail> {
     const findByIdPlayerService = new FindByIdPlayerService();
 
     const findByIdMonsterService = new FindByIdMonsterService();

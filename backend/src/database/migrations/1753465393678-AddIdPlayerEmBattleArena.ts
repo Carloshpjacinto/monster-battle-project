@@ -10,7 +10,7 @@ export class AddIdPlayerEmBattleArena1753464666968
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
-      "battle_arena",
+      "battle",
       new TableColumn({
         name: "id_player",
         type: "integer",
@@ -21,7 +21,7 @@ export class AddIdPlayerEmBattleArena1753464666968
     await queryRunner.createForeignKey(
       "battle_arena",
       new TableForeignKey({
-        name: "BattleArenaPlayer",
+        name: "BattlePlayer",
         columnNames: ["id_player"],
         referencedTableName: "player",
         referencedColumnNames: ["id"],
@@ -31,7 +31,7 @@ export class AddIdPlayerEmBattleArena1753464666968
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey("battle_arena", "BattleArenaPlayer");
-    await queryRunner.dropColumn("battle_arena", "id_player");
+    await queryRunner.dropForeignKey("battle", "BattlePlayer");
+    await queryRunner.dropColumn("battle", "id_player");
   }
 }

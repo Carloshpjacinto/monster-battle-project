@@ -10,8 +10,8 @@ import { Player } from "../../player/entities/player.entity";
 import { Arena } from "../../arena/entities/arena.entity";
 import { Monster } from "../../monster/entities/monster.entity";
 
-@Entity("battle_arena")
-export class BattleArena {
+@Entity("battle")
+export class Battle {
   @PrimaryGeneratedColumn()
   id!: number;
 

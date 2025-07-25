@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
 
-export class CreateBattleArenaDto {
+export class CreateBattleDto {
   @IsString()
   @IsNotEmpty()
   id_player!: number;
