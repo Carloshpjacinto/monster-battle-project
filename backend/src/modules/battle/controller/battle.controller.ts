@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import CreateBattleService from "../services/createBattle.service";
 import FindBattleByIdService from "../services/findBattleById.service";
+import StartBattleService from "../services/startBattle.service";
 
 export default class BattleController {
   public async create(req: Request, res: Response): Promise<Response> {
@@ -14,6 +15,21 @@ export default class BattleController {
       return res.status(201).json(battle);
     } catch (error) {
       console.error("Erro ao cadastrar Batalha:", error);
+      return res.status(500).json({ mensagem: "Erro interno no servidor" });
+    }
+  }
+
+  public async start(req: Request, res: Response): Promise<Response> {
+    try {
+      const startBattleService = new StartBattleService();
+
+      const idBattle = Number(req.params.id);
+
+      const battle = await startBattleService.execute(idBattle);
+
+      return res.status(201).json(battle);
+    } catch (error) {
+      console.error("Erro ao procurar Batalha:", error);
       return res.status(500).json({ mensagem: "Erro interno no servidor" });
     }
   }
