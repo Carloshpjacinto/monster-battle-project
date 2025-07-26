@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateTableMonsters1753415759468 implements MigrationInterface {
+export class CreateTableResult1753493065704 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "monsters",
+        name: "result",
         columns: [
           {
             name: "id",
@@ -14,9 +14,20 @@ export class CreateTableMonsters1753415759468 implements MigrationInterface {
             generationStrategy: "increment",
           },
           {
-            name: "name",
+            name: "id_battle",
+            type: "integer",
+          },
+          {
+            name: "name_arena",
             type: "varchar",
-            isUnique: true,
+          },
+          {
+            name: "name_player",
+            type: "varchar",
+          },
+          {
+            name: "name_monster",
+            type: "varchar",
           },
           {
             name: "hp",
@@ -34,12 +45,20 @@ export class CreateTableMonsters1753415759468 implements MigrationInterface {
             name: "speed",
             type: "integer",
           },
+          {
+            name: "special",
+            type: "boolean",
+          },
+          {
+            name: "turn_of_attack",
+            type: "boolean",
+          },
         ],
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("monsters");
+    await queryRunner.dropTable("result");
   }
 }

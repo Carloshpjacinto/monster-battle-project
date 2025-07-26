@@ -20,8 +20,4 @@ export class CreateMonsterDto {
   @IsNumber()
   @IsNotEmpty()
   speed!: number;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  special!: boolean;
 }

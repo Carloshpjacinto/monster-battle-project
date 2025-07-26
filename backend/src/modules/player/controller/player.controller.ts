@@ -6,8 +6,6 @@ export default class PlayerController {
     try {
       const createPlayerService = new CreatePlayerService();
 
-      console.log(req.body)
-
       const player = await createPlayerService.execute(req.body);
 
       return res.status(201).json(player);

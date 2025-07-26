@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateTableBattleArena1753463557278 implements MigrationInterface {
+export class CreateTableBattle1753463557278 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -15,15 +15,35 @@ export class CreateTableBattleArena1753463557278 implements MigrationInterface {
           },
 
           {
-            name: "turn_of_attack",
-            type: "boolean",
-            default: false,
+            name: "id_arena",
+            type: "integer",
           },
 
           {
+            name: "id_player1",
+            type: "integer",
+          },
+          {
+            name: "id_player2",
+            type: "integer",
+          },
+          {
+            name: "id_monster_player1",
+            type: "integer",
+          },
+          {
+            name: "id_monster_player2",
+            type: "integer",
+          },
+          {
             name: "turn_counter",
             type: "integer",
-            default: 0,
+            default: 0
+          },
+          {
+            name: "player_wins",
+            type: "varchar",
+            default: null
           },
         ],
       })

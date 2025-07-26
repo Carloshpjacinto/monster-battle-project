@@ -19,7 +19,4 @@ export class Monster {
 
   @Column()
   speed!: number;
-
-  @Column()
-  special!: boolean;
 }

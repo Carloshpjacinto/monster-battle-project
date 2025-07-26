@@ -4,6 +4,8 @@ import BattleController from "../controller/battle.controller";
 const battleRouter = Router();
 const battleController = new BattleController();
 
-battleRouter.post("/", battleController.create);
+battleRouter.get("/:id", battleController.findById);
+
+battleRouter.post("/:id", battleController.create);
 
 export default battleRouter;

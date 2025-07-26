@@ -1,25 +1,11 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  TableColumn,
-  TableForeignKey,
-} from "typeorm";
+import { MigrationInterface, QueryRunner, TableForeignKey } from "typeorm";
 
-export class AddIdArenaEmBattleArena1753464666968
+export class AddIdArenaEmTableBattle1753492766995
   implements MigrationInterface
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.addColumn(
-      "battle",
-      new TableColumn({
-        name: "id_arena",
-        type: "integer",
-        isNullable: true,
-      })
-    );
-
     await queryRunner.createForeignKey(
-      "battle_arena",
+      "battle",
       new TableForeignKey({
         name: "BattleArena",
         columnNames: ["id_arena"],

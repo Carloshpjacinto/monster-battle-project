@@ -15,21 +15,29 @@ export class Battle {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
-  turn_of_attack!: boolean;
+  @OneToOne(() => Arena)
+  @JoinColumn({ name: "id_arena" })
+  arena!: Arena;
+
+  @ManyToOne(() => Player)
+  @JoinColumn({ name: "id_player1" })
+  player1!: Player;
+
+  @ManyToOne(() => Player)
+  @JoinColumn({ name: "id_player2" })
+  player2!: Player;
+
+  @ManyToOne(() => Monster)
+  @JoinColumn({ name: "id_monster_player1" })
+  monster_player1!: Monster;
+
+  @ManyToOne(() => Monster)
+  @JoinColumn({ name: "id_monster_player2" })
+  monster_player2!: Monster;
 
   @Column()
   turn_counter!: number;
 
-  @OneToOne(() => Arena)
-  @JoinColumn({ name: "id_arena" })
-  id_arena!: Arena;
-
-  @ManyToOne(() => Monster)
-  @JoinColumn({ name: "id_monster" })
-  id_monster!: Monster;
-
-  @OneToOne(() => Player)
-  @JoinColumn({ name: "id_player" })
-  id_player!: Player;
+  @Column()
+  player_wins!: string;
 }
