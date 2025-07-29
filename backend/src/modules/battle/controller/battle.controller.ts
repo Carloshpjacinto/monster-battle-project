@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import CreateBattleService from "../services/createBattle.service";
 import FindBattleByIdService from "../services/findBattleById.service";
-import StartBattleService from "../services/startBattle.service";
+import UpdateBattleService from "../services/updateBattle.service";
 
 export default class BattleController {
   public async create(req: Request, res: Response): Promise<Response> {
@@ -19,13 +19,13 @@ export default class BattleController {
     }
   }
 
-  public async start(req: Request, res: Response): Promise<Response> {
+  public async findById(req: Request, res: Response): Promise<Response> {
     try {
-      const startBattleService = new StartBattleService();
+      const findBattleByIdService = new FindBattleByIdService();
 
-      const idBattle = Number(req.params.id);
+      const idPlayer = Number(req.params.id);
 
-      const battle = await startBattleService.execute(idBattle);
+      const battle = await findBattleByIdService.execute(idPlayer);
 
       return res.status(201).json(battle);
     } catch (error) {
@@ -34,13 +34,13 @@ export default class BattleController {
     }
   }
 
-  public async findById(req: Request, res: Response): Promise<Response> {
+  public async update(req: Request, res: Response): Promise<Response> {
     try {
-      const findBattleByIdService = new FindBattleByIdService();
+      const updateBattleService = new UpdateBattleService();
 
-      const idPlayer = Number(req.params.id);
+      const idBattle = Number(req.params.id);
 
-      const battle = await findBattleByIdService.execute(idPlayer);
+      const battle = await updateBattleService.execute(idBattle, req.body);
 
       return res.status(201).json(battle);
     } catch (error) {

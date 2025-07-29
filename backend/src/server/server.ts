@@ -1,19 +1,12 @@
-import express, { Express } from "express";
-import cors from "cors";
-import { AppDataSource } from "./database/data.source";
-import routes from "./routes";
-
-const app: Express = express();
-
-app.use(express.json());
-app.use(cors());
-app.use(routes);
+import { AppDataSource } from "../database/data.source";
+import { httpServer } from "./http/http";
+import "./websocket/websocket";
 
 const port: number = Number(process.env.PORT);
 
 AppDataSource.initialize()
   .then(() => {
-    app.listen(3000, () => {
+    httpServer.listen(3000, () => {
       console.log(`Rodando o servidor na porta ${port}`);
     });
 

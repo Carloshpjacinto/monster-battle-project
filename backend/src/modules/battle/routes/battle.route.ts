@@ -6,8 +6,8 @@ const battleController = new BattleController();
 
 battleRouter.get("/:id", battleController.findById);
 
-battleRouter.get("/start/:id", battleController.start);
-
 battleRouter.post("/:id", battleController.create);
+
+battleRouter.patch("/:id", battleController.update);
 
 export default battleRouter;
