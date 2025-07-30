@@ -1,3 +1,4 @@
+import UpdateBattleService from "../../modules/battle/services/updateBattle.service";
 import {
   damageCalculation,
   Response,
@@ -9,8 +10,11 @@ const sleep = (ms: number) =>
   new Promise((resolve, reject) => setTimeout(resolve, ms));
 
 io.on("connection", async (socket) => {
-  socket.on("Start", async (data) => {
+  socket.on("start", async (data) => {
     const infoBattle = await summaryPlayer(data);
+
+    const updateBattleService = new UpdateBattleService();
+
     let contadorTurn: number = 1;
     let calculte: Response;
 
@@ -54,6 +58,11 @@ io.on("connection", async (socket) => {
           "response-start-fight",
           `Monstro adversario causou ${calculte.danoCausado} de dano ao seu monstro, o jogo terminou em um golpe, Vitoria do bot`
         );
+
+        updateBattleService.execute(data, {
+          turn_counter: contadorTurn,
+          player_wins: "Bot",
+        });
         return 0;
       }
     }
@@ -82,6 +91,11 @@ io.on("connection", async (socket) => {
               "response-my-attack",
               `Seu monstro derrotou o monstro adversario o jogo terminou, Parabéns você ganhou`
             );
+
+            updateBattleService.execute(data, {
+              turn_counter: contadorTurn,
+              player_wins: "Player1",
+            });
             return 0;
           } else {
             await sleep(5000);
@@ -89,6 +103,8 @@ io.on("connection", async (socket) => {
               "response-my-attack",
               `O ataque do seu Monstro causou ${calculte.danoCausado} de dano ao monstro do adversario`
             );
+
+            contadorTurn += 1;
 
             await sleep(5000);
             socket.emit(
@@ -117,15 +133,18 @@ io.on("connection", async (socket) => {
           "response-my-attack",
           `Seu monstro foi derrotado, o adversario ganhou o jogo, Vitoria do Bot`
         );
+
+        updateBattleService.execute(data, {
+          turn_counter: contadorTurn,
+          player_wins: "Bot",
+        });
         return 0;
       } else {
-        contadorTurn += 1;
 
         await sleep(5000);
         socket.emit(
           "response-my-attack",
-          `Monstro adversario causou ${calculte.danoCausado} de dano ao seu monstro`,
-          contadorTurn
+          `Monstro adversario causou ${calculte.danoCausado} de dano ao seu monstro`
         );
 
         infoBattle.Player1.attack_turn = true;

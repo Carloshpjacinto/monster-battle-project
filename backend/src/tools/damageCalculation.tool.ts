@@ -9,7 +9,7 @@ export async function damageCalculation(
   hp: number
 ): Promise<Response> {
   const critico = Math.random();
-  const danoCausado = Math.abs(attack * critico - defend);
+  const danoCausado = Math.ceil(Math.abs(attack * critico - defend));
 
   let newHp = Math.ceil(hp - danoCausado);
 
