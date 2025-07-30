@@ -1,0 +1,22 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+
+  .mid-layout-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-family: "Bitcount Prop Double", system-ui;
+      font-size: 2.2rem;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: #ffff;
+      height: 100vh;
+      width: 2.5rem;
+    }
+  }
+}
