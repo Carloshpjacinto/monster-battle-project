@@ -29,7 +29,8 @@
 </div>
 
 ## 📁 Arquitetura
-A arquitetura segue o padrão modular com separação por camadas (controllers, services, repositories), respeitando os princípios SOLID e foco em escalabilidade. A comunicação entre frontend e backend é feita via WebSocket (Socket.IO) e HTTP REST usando axios.
+
+#### A arquitetura do projeto é monolítica, com o backend seguindo o padrão modular e separação por camadas (controllers, services, repositories), respeitando os princípios SOLID e com foco em escalabilidade. A comunicação entre o frontend e o backend é realizada via WebSocket (Socket.IO) e HTTP REST, utilizando Axios.
 
 ## ⚔️ Funcionalidades Principais
 #### Seleção de monstros para jogadores e bots
