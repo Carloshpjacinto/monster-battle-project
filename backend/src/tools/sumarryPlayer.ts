@@ -1,5 +1,5 @@
-import FindBattleByIdService from "../../modules/battle/services/findBattleById.service";
-import { Player } from "../../types/summaryPlayer";
+import FindBattleByIdService from "../modules/battle/services/findBattleById.service";
+import { Player } from "../types/summaryPlayer";
 
 export async function summaryPlayer(idBattle: number) {
   const findBattleByIdService = new FindBattleByIdService();

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BattleService } from "../../../api/Battle/service/Battle.service";
 import "./index.scss";
 import { Link, useParams } from "react-router-dom";
-import { socket } from "../../../api/WebSocket/conection.websocket";
+import { socket } from "../../../api/WebSocket/Connection.websocket";
 
 const PrepareBattle = () => {
   const { id } = useParams();
@@ -22,10 +22,6 @@ const PrepareBattle = () => {
     if (id) getBattleById(id);
   }, [id]);
 
-  const startBattle = () => {
-
-    socket.emit("start");
-  };
   return (
     <>
       <div className="PrepareBattle">
@@ -43,9 +39,7 @@ const PrepareBattle = () => {
         </div>
 
         <Link className="link" to={`/battle/room/${id}`}>
-          <button className="button-start-battle" onClick={startBattle}>
-            START
-          </button>
+          <button className="button-start-battle">START</button>
         </Link>
 
         <div>
