@@ -95,6 +95,53 @@
 #### bash
 
     npm run test:cov
+
+#### Cadastro de monstros: http://localhost:3000/monster
+
+#### Caso queira adicionar os monstros de uma vez só:
+
+    INSERT INTO monsters (name, hp, attack, defend, speed) VALUES
+    ('Bulbasaur', 45, 49, 49, 45),
+    ('Charmander', 39, 52, 43, 65),
+    ('Squirtle', 44, 48, 65, 43),
+    ('Pikachu', 35, 55, 40, 90),
+    ('Jigglypuff', 115, 45, 20, 20),
+    ('Meowth', 40, 45, 35, 90),
+    ('Psyduck', 50, 52, 48, 55),
+    ('Machop', 70, 80, 50, 35),
+    ('Geodude', 40, 80, 100, 20),
+    ('Eevee', 55, 55, 50, 55),
+    ('Snorlax', 160, 110, 65, 30),
+    ('Gengar', 60, 65, 60, 110),
+    ('Onix', 35, 45, 160, 70),
+    ('Dragonite', 91, 134, 95, 80),
+    ('Alakazam', 55, 50, 45, 120),
+    ('Gyarados', 95, 125, 79, 81),
+    ('Magikarp', 20, 10, 55, 80),
+    ('Mewtwo', 106, 110, 90, 130),
+    ('Vulpix', 38, 41, 40, 65),
+    ('Bellsprout', 50, 75, 35, 40),
+    ('Abra', 25, 20, 15, 90),
+    ('Cubone', 50, 50, 95, 35),
+    ('Slowpoke', 90, 65, 65, 15),
+    ('Scyther', 70, 110, 80, 105),
+    ('Ditto', 48, 48, 48, 48);
+
+#### Cadastro de arenas: http://localhost:3000/arena
+
+#### Caso queira adicionar varias arenas de uma vez só:
+
+    INSERT INTO arenas (name, max_players) VALUES
+    ('Floresta Encantada', 2),
+    ('Montanha Rochosa', 2),
+    ('Arena de Areia', 2),
+    ('Vale Gelado', 2),
+    ('Caverna Sombria', 2),
+    ('Deserto Ardente', 2),
+    ('Templo Antigo', 2),
+    ('Lago Cristalino', 2),
+    ('Planície Ventosa', 2),
+    ('Fortaleza Abandonada', 2);
     
 ## 🚪 Portas e Interfaces
 
