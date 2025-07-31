@@ -1,4 +1,5 @@
 export type battleDetail = {
+  id: number;
   arena: {
     name: string;
     max_player: number;

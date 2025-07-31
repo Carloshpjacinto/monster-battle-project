@@ -11,6 +11,11 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  },
+});
 
 export { httpServer, io };

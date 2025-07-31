@@ -28,20 +28,13 @@ export default class CreateBattleService {
     const arena = await findByIdArenaService.execute(data.id_arena);
     if (!arena) throw new Error("Arena não encontrada");
 
-    const monster = await findByIdMonsterService.execute(data.id_monster);
-    if (!monster) throw new Error("Monster não encontrada");
+    const monsterPlayer = await findByIdMonsterService.execute(
+      data.id_monsterPlayer
+    );
+    if (!monsterPlayer) throw new Error("Monster não encontrada");
 
-    let monsterBot = null;
-
-    while (!monsterBot) {
-      const randomId = Math.floor(Math.random() * 20) + 1;
-
-      const monster = await findByIdMonsterService.execute(randomId);
-
-      if (monster) {
-        monsterBot = monster;
-      }
-    }
+    const monsterBot = await findByIdMonsterService.execute(data.id_monsterBot);
+    if (!monsterBot) throw new Error("Monster não encontrada");
 
     const dataBot = { name: "Bot" };
 
@@ -53,7 +46,7 @@ export default class CreateBattleService {
       arena: arena,
       player1: player,
       player2: botPlayer,
-      monster_player1: monster,
+      monster_player1: monsterPlayer,
       monster_player2: monsterBot,
       turn_counter: 0,
       player_wins: "Bot",
@@ -61,20 +54,21 @@ export default class CreateBattleService {
 
     const newBattle = BattleArenaRepository.create(battle);
 
-    await BattleArenaRepository.save(newBattle);
+    const createBattle = await BattleArenaRepository.save(newBattle);
 
     const battleDetail: battleDetail = {
+      id: createBattle.id,
       arena: {
         name: arena.name,
         max_player: arena.max_players,
       },
       Player: {
         name: player.name,
-        monster: monster.name,
-        hp: monster.hp,
-        ataque: monster.attack,
-        defesa: monster.defend,
-        velocidade: monster.speed,
+        monster: monsterPlayer.name,
+        hp: monsterPlayer.hp,
+        ataque: monsterPlayer.attack,
+        defesa: monsterPlayer.defend,
+        velocidade: monsterPlayer.speed,
       },
 
       Bot: {

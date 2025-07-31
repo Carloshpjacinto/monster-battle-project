@@ -1,21 +1,23 @@
-import { useState } from "react";
 import "./index.scss";
-import { monstersInfo } from "../../helpers/listMonsters";
+import { MonsterService } from "../../api/Monster/service/Monster.service";
+import { useEffect, useState } from "react";
 
-function SelectBot() {
-  const [selectedMonster, setSelectedMonster] = useState();
+function SelectBot({
+  handleSelectMonsterBot,
+  handleRandomSelect,
+  selectedMonsterBot,
+  createInfoBattle,
+}) {
+  async function getMonster() {
+    const { data } = await MonsterService.getMonster();
+    setMonsters(data);
+  }
 
-  const handleSelectChange = (e) => {
-    const selectedId = Number(e.target.value);
-    const monster = monstersInfo.find((m) => m.id === selectedId);
-    setSelectedMonster(monster);
-  };
+  const [monsters, setMonsters] = useState([]);
 
-  const handleRandomSelect = () => {
-    const randomIndex = Math.floor(Math.random() * monstersInfo.length);
-    const randomMonster = monstersInfo[randomIndex];
-    setSelectedMonster(randomMonster);
-  };
+  useEffect(() => {
+    getMonster();
+  }, []);
   return (
     <div className="painel-cadastro">
       <h2>Bot</h2>
@@ -34,9 +36,13 @@ function SelectBot() {
           <select
             className="selectMonster"
             name="selectMonster"
-            onChange={handleSelectChange}
+            onChange={handleSelectMonsterBot}
+            defaultValue=""
           >
-            {monstersInfo.map((monster) => (
+            <option value="" disabled>
+              Selecione...
+            </option>
+            {monsters.map((monster) => (
               <option value={monster.id}>{monster.name}</option>
             ))}
           </select>
@@ -44,23 +50,24 @@ function SelectBot() {
         <div className="position-button">
           <button
             type="button"
-            className="startBattle"
+            className="prepareBattle"
             name="nickNameUser"
+            onClick={createInfoBattle}
           >
-            Start Battle
+            Prepare Battle
           </button>
         </div>
       </form>
 
-      {selectedMonster && (
+      {selectedMonsterBot && (
         <div>
           <h2>Monster info</h2>
           <form className="form-monster">
-            <h3>{selectedMonster.name}</h3>
-            <p>HP: {selectedMonster.hp}</p>
-            <p>Attack: {selectedMonster.attack}</p>
-            <p>Defesa: {selectedMonster.defend}</p>
-            <p>Velocidade: {selectedMonster.speed}</p>
+            <h3>{selectedMonsterBot.name}</h3>
+            <p>HP: {selectedMonsterBot.hp}</p>
+            <p>Attack: {selectedMonsterBot.attack}</p>
+            <p>Defesa: {selectedMonsterBot.defend}</p>
+            <p>Velocidade: {selectedMonsterBot.speed}</p>
           </form>
         </div>
       )}

@@ -6,4 +6,8 @@ const monsterController = new MonsterController();
 
 monsterRouter.post("/", monsterController.create);
 
+monsterRouter.get("/", monsterController.findAll);
+
+monsterRouter.get("/:id", monsterController.findById);
+
 export default monsterRouter;
