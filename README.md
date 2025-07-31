@@ -1,4 +1,4 @@
-# 🧩 Batalha de Monstros - API + Frontend Integrado
+# 🧩  Batalha de Monstros - API + Frontend Integrado
 
 ### Sistema completo para batalhas interativas entre monstros controlados por jogadores ou bots. O projeto é um monolito que integra API RESTful com WebSocket e interface gráfica com React.
 
