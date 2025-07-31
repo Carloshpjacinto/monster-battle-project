@@ -25,7 +25,7 @@
 
 ### Testes:
 <div>
-  v<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" width="45" height="45" style="margin-right: 50px;"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" width="45" height="45" style="margin-right: 50px;"/>
 </div>
 
 ## 📁 Arquitetura
