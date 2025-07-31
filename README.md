@@ -98,7 +98,7 @@
 
 #### Cadastro de monstros: http://localhost:3000/monster
 
-#### Caso queira adicionar os monstros de uma vez só:
+#### Caso queira adicionar os monstros de uma vez só (SQL):
 
     INSERT INTO monsters (name, hp, attack, defend, speed) VALUES
     ('Bulbasaur', 45, 49, 49, 45),
@@ -129,7 +129,7 @@
 
 #### Cadastro de arenas: http://localhost:3000/arena
 
-#### Caso queira adicionar varias arenas de uma vez só:
+#### Caso queira adicionar varias arenas de uma vez só (SQL):
 
     INSERT INTO arenas (name, max_players) VALUES
     ('Floresta Encantada', 2),
