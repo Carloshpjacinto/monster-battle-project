@@ -114,7 +114,10 @@ const RoomBattle = () => {
             {battle?.monster_player1.name} ({battle?.player1.name})
           </h3>
           <div className="hp-bar">
-            <div style={{ width: `${playerHP}%` }} className="hp-fill" />
+            <div
+              className="hp-fill"
+              style={{ width: `${Math.max(0, Math.min(playerHP, 100))}%` }}
+            />
           </div>
           <p>HP: {playerHP || 0}</p>
           <p>Attack: {battle?.monster_player1.attack || "Carregando..."}</p>
@@ -129,7 +132,10 @@ const RoomBattle = () => {
             {battle?.monster_player2.name} ({battle?.player2.name})
           </h3>
           <div className="hp-bar">
-            <div style={{ width: `${botHP}%` }} className="hp-fill enemy" />
+            <div
+              className="hp-fill enemy"
+              style={{ width: `${Math.max(0, Math.min(botHP, 100))}%` }}
+            />
           </div>
           <p>HP: {botHP || 0}</p>
           <p>Attack: {battle?.monster_player2.attack || "Carregando..."}</p>

@@ -1,6 +1,6 @@
 import { AppDataSource } from "../database/data.source";
 import { httpServer } from "./http/http";
-import "./websocket/websocket";
+import "./websocket/webSocket";
 
 const port: number = Number(process.env.PORT);
 

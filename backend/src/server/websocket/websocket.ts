@@ -4,7 +4,7 @@ import {
   Response,
 } from "../../tools/damageCalculation.tool";
 import { io } from "../http/http";
-import { summaryPlayer } from "../../tools/sumarryPlayer";
+import { summaryPlayer } from "../../tools/sumarryPlayer.tool";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -29,7 +29,6 @@ io.on("connection", (socket) => {
     );
 
     await sleep(3000);
-
     if (!playerGoesFirst) {
       calculo = await damageCalculation(
         infoBattle.Player2.monster.attack,
@@ -51,6 +50,7 @@ io.on("connection", (socket) => {
 
       if (infoBattle.Player1.monster.hp <= 0) {
         infoBattle.Player1.monster.hp = 0;
+        await sleep(3000);
         io.to(`battle-${battleId}`).emit(
           "log",
           `Seu monstro foi derrotado! Vitória do adversário.`
@@ -107,6 +107,8 @@ io.on("connection", (socket) => {
         return;
       }
 
+      ++turnCount;
+
       infoBattle.Player1.attack_turn = false;
       await sleep(3000);
 
@@ -123,6 +125,13 @@ io.on("connection", (socket) => {
         botHP: infoBattle.Player2.monster.hp,
       });
 
+      await sleep(1000);
+      io.to(`battle-${battleId}`).emit(
+        "log",
+        `Adversário está atacando...`
+      );
+
+      await sleep(3000);
       io.to(`battle-${battleId}`).emit(
         "log",
         `Adversário atacou causando ${calculo.danoCausado} de dano.`
@@ -197,6 +206,8 @@ io.on("connection", (socket) => {
         });
         return;
       }
+
+      ++turnCount;
 
       io.to(`battle-${battleId}`).emit("your-turn");
     });
@@ -289,6 +300,8 @@ io.on("connection", (socket) => {
         });
         return;
       }
+
+      ++turnCount;
 
       io.to(`battle-${battleId}`).emit("your-turn");
     });
